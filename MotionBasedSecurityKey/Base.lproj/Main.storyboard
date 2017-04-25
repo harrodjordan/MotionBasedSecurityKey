@@ -1,14 +1,19 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MotionBasedSecurityKey" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +21,99 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="h1M-Bx-9TM">
+                                <rect key="frame" x="84" y="49" width="214" height="41"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Welcome to the ECE 4320 " textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqb-Bf-Km1">
+                                        <rect key="frame" x="0.0" y="0.0" width="213.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Motion-Based Security Key!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvi-2Y-MNa">
+                                        <rect key="frame" x="0.0" y="20.5" width="213.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="nvi-2Y-MNa" firstAttribute="width" secondItem="iqb-Bf-Km1" secondAttribute="width" id="aQa-bZ-ML4"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap 'Start' to set a password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNP-Xs-44v">
+                                <rect key="frame" x="78" y="226.5" width="218" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMH-u1-tfK">
+                                <rect key="frame" x="138" y="309" width="99" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="dz1-m8-Ak3"/>
+                                    <constraint firstAttribute="width" constant="99" id="vOc-1x-QgK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="Start!"/>
+                                <connections>
+                                    <action selector="startRecordingPassword:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0RM-ba-cgg"/>
+                                    <segue destination="TOO-fJ-8ik" kind="show" id="5LK-27-ABg"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="eNP-Xs-44v" firstAttribute="top" secondItem="h1M-Bx-9TM" secondAttribute="bottom" constant="136" id="Sfx-AN-Wod"/>
+                            <constraint firstItem="vMH-u1-tfK" firstAttribute="centerX" secondItem="eNP-Xs-44v" secondAttribute="centerX" id="dkx-Ip-W9f"/>
+                            <constraint firstItem="eNP-Xs-44v" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="62" id="hpr-0l-89S"/>
+                            <constraint firstItem="vMH-u1-tfK" firstAttribute="top" secondItem="eNP-Xs-44v" secondAttribute="bottom" constant="62" id="lVL-3S-g8o"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eNP-Xs-44v" secondAttribute="trailing" constant="63" id="okr-8O-ruS"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vMH-u1-tfK" secondAttribute="bottom" constant="298" id="zVv-GP-8hb"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="32.799999999999997" y="38.23088455772114"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="LwN-UO-3ke">
+            <objects>
+                <viewController id="TOO-fJ-8ik" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Nnu-mj-opc"/>
+                        <viewControllerLayoutGuide type="bottom" id="g0a-Av-8Vz"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wGd-kB-21C">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" ambiguous="YES" misplaced="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="g9r-47-TKI">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Recording Motion-Based Password" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gNQ-b9-1kl">
+                                <rect key="frame" x="63" y="133" width="248" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="gNQ-b9-1kl" secondAttribute="trailing" constant="48" id="5yU-JH-OvN"/>
+                            <constraint firstItem="gNQ-b9-1kl" firstAttribute="centerX" secondItem="wGd-kB-21C" secondAttribute="centerX" id="H1K-a1-aiM"/>
+                            <constraint firstItem="gNQ-b9-1kl" firstAttribute="leading" secondItem="wGd-kB-21C" secondAttribute="leadingMargin" constant="47" id="TkZ-1p-oEe"/>
+                            <constraint firstItem="gNQ-b9-1kl" firstAttribute="top" secondItem="Nnu-mj-opc" secondAttribute="bottom" constant="113" id="eOL-ge-7Hu"/>
+                            <constraint firstItem="g9r-47-TKI" firstAttribute="leading" secondItem="wGd-kB-21C" secondAttribute="leadingMargin" constant="161" id="kAl-en-ceP"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="g9r-47-TKI" secondAttribute="trailing" constant="162" id="sVP-to-Ti5"/>
+                            <constraint firstItem="gNQ-b9-1kl" firstAttribute="centerX" secondItem="g9r-47-TKI" secondAttribute="centerX" id="tES-qQ-Gcb"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HNa-4A-nYE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="895" y="38"/>
         </scene>
     </scenes>
 </document>
