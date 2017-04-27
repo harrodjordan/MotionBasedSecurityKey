@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreMotion
+import AudioToolbox
 
 
 class ViewController: UIViewController {
@@ -45,32 +46,57 @@ class ViewController: UIViewController {
         
     }
     
-    func inputPassword {
+    func inputPassword() {
   
-    
-    // record new password
-    // compare to set password 
-    // move to an accept screen if similar enough
-    // reject with vibration otherwise
+        // record new password
+        let attempt = Gyroscope();
+        
+        
+        //measure changes in acceleration/position
+        attempt.recording();
+        attempt.saveData();
+        
+        if attempt.isPassword() {
+              // move to an accept screen if similar enough
+        }
+        
+        else {
+             // reject with vibration otherwise
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+           
+        }
+
+
         
     }
     
-    //MARK: isPassword() determines whether the password input matches the stored password
-    //      Parameters: none
+
     
-    func isPassword() {
-        //load password input
-        //compare to saved password
-        //if yes return 1
-        //else return 0
-    }
     
     func resetPassword() //button attached  
     {
-        //ask for previous password
-        //call isPassword 
-        //if yes, cann startRecordingPassword
-        //if no, shake and return to home view
+        
+        // record new password
+        let attempt = Gyroscope();
+        
+        
+        //measure changes in acceleration/position
+        attempt.recording();
+        attempt.saveData();
+        
+        
+        //ask for previous password and call isPassword
+        if attempt.isPassword() {
+            // move back to start recording screen if similar enough
+        }
+            
+        else {
+            // reject with vibration otherwise
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            
+        }
+
+
     }
 
 }
