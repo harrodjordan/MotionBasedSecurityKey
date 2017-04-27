@@ -8,7 +8,7 @@
 
 import UIKit
 import CoreMotion
-import Gyroscope.swift //figure out how to import other classes
+
 
 class ViewController: UIViewController {
 
@@ -29,13 +29,14 @@ class ViewController: UIViewController {
     @IBAction func startRecordingPassword(_ sender: UIButton) {
         
         //create Gryoscope object
-        Gyroscope newpass = Gyroscope();
+        let newpass = Gyroscope();
         
         //measure changes in acceleration/position
         newpass.recording();
        
         //save data to a location
         newpass.saveData();
+        newpass.setPassword();
         
         //change string label to "Done!" once timed out
         
@@ -52,6 +53,24 @@ class ViewController: UIViewController {
     // move to an accept screen if similar enough
     // reject with vibration otherwise
         
+    }
+    
+    //MARK: isPassword() determines whether the password input matches the stored password
+    //      Parameters: none
+    
+    func isPassword() {
+        //load password input
+        //compare to saved password
+        //if yes return 1
+        //else return 0
+    }
+    
+    func resetPassword() //button attached  
+    {
+        //ask for previous password
+        //call isPassword 
+        //if yes, cann startRecordingPassword
+        //if no, shake and return to home view
     }
 
 }

@@ -18,6 +18,7 @@ class Gyroscope {
     private var z_Data = 0;
     private static var duration = 20
     private var all_Data = CMSensorDataList();
+    private var password = Gyroscope();
     
     
     
@@ -36,7 +37,15 @@ class Gyroscope {
     
     func saveData() {
         
-        self.all_Data.
+        self.all_Data
+    }
+    
+    func setPassword() {
+        password.saveData();
+    }
+    
+    func printData() {
+        
     }
     
     
