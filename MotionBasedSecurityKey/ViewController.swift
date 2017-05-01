@@ -46,8 +46,9 @@ class ViewController: UIViewController {
         
     }
     
-    func inputPassword() {
-  
+    @IBAction func inputtingPassword(_ sender: UIButton) {
+        
+        
         // record new password
         let attempt = Gyroscope();
         
@@ -57,19 +58,15 @@ class ViewController: UIViewController {
         attempt.saveData();
         
         if attempt.isPassword() {
-              // move to an accept screen if similar enough
+            // move to an accept screen if similar enough
         }
-        
+            
         else {
-             // reject with vibration otherwise
+            // reject with vibration otherwise
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-           
-        }
-
-
-        
+            
     }
-    
+    }
 
     
     
