@@ -65,13 +65,13 @@ class ViewController: UIViewController {
             // reject with vibration otherwise
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             
-    }
+        }
+        
     }
 
     
-    
-    func resetPassword() //button attached  
-    {
+     func resetPassword() {
+        
         
         // record new password
         let attempt = Gyroscope();
@@ -85,6 +85,9 @@ class ViewController: UIViewController {
         //ask for previous password and call isPassword
         if attempt.isPassword() {
             // move back to start recording screen if similar enough
+            
+            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "RecordingViewController") as! RecordingViewController
+            self.navigationController?.pushViewController(secondViewController, animated: true)
         }
             
         else {
@@ -92,8 +95,9 @@ class ViewController: UIViewController {
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             
         }
+        
 
-
+        
     }
 
 }

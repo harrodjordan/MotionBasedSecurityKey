@@ -42,13 +42,13 @@
                                     <constraint firstItem="nvi-2Y-MNa" firstAttribute="width" secondItem="iqb-Bf-Km1" secondAttribute="width" id="aQa-bZ-ML4"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap 'Start' to set a password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNP-Xs-44v">
-                                <rect key="frame" x="78" y="226.5" width="218" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Tap 'Start' to set a new password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNP-Xs-44v">
+                                <rect key="frame" x="78" y="227" width="218" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMH-u1-tfK">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vMH-u1-tfK">
                                 <rect key="frame" x="138" y="309" width="99" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="dz1-m8-Ak3"/>
@@ -81,9 +81,7 @@
                         <constraints>
                             <constraint firstItem="eNP-Xs-44v" firstAttribute="top" secondItem="h1M-Bx-9TM" secondAttribute="bottom" constant="136" id="Sfx-AN-Wod"/>
                             <constraint firstItem="vMH-u1-tfK" firstAttribute="centerX" secondItem="eNP-Xs-44v" secondAttribute="centerX" id="dkx-Ip-W9f"/>
-                            <constraint firstItem="eNP-Xs-44v" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="62" id="hpr-0l-89S"/>
                             <constraint firstItem="vMH-u1-tfK" firstAttribute="top" secondItem="eNP-Xs-44v" secondAttribute="bottom" constant="62" id="lVL-3S-g8o"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="eNP-Xs-44v" secondAttribute="trailing" constant="63" id="okr-8O-ruS"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="vMH-u1-tfK" secondAttribute="bottom" constant="298" id="zVv-GP-8hb"/>
                         </constraints>
                     </view>
@@ -149,16 +147,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZdD-sl-Oc7">
-                                <rect key="frame" x="142" y="297" width="91" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Return Home"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bB8-o1-kv2">
-                                <rect key="frame" x="108" y="355" width="158" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Change Your Password"/>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You have unlocked" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Aw-Tq-cjd">
                                 <rect key="frame" x="113" y="186" width="144" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -173,6 +161,11 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bB8-o1-kv2">
+                                <rect key="frame" x="106" y="335" width="158" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Change Your Password"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
