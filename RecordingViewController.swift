@@ -11,6 +11,7 @@ import Foundation
 
 class RecordingViewController: UIViewController {
     
+    @IBOutlet weak var spinning: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +22,9 @@ class RecordingViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+
+    
     
 }
 

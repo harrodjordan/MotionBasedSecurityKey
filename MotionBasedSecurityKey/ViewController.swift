@@ -54,51 +54,31 @@ class ViewController: UIViewController {
         
         
         //measure changes in acceleration/position
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "RecordingViewController") as! RecordingViewController
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+        secondViewController.spinning.startAnimating();
         attempt.recording();
         attempt.saveData();
+        secondViewController.spinning.stopAnimating();
         
         if attempt.isPassword() {
-            // move to an accept screen if similar enough
+            let thirdViewController = self.storyboard?.instantiateViewController(withIdentifier: "SavedViewController") as! RecordingViewController
+            self.navigationController?.pushViewController(thirdViewController, animated: true)
         }
             
         else {
             // reject with vibration otherwise
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-            
+            let startViewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! RecordingViewController
+            self.navigationController?.pushViewController(startViewController, animated: true)
         }
         
     }
 
     
-     func resetPassword() {
+    
         
-        
-        // record new password
-        let attempt = Gyroscope();
-        
-        
-        //measure changes in acceleration/position
-        attempt.recording();
-        attempt.saveData();
-        
-        
-        //ask for previous password and call isPassword
-        if attempt.isPassword() {
-            // move back to start recording screen if similar enough
-            
-            let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "RecordingViewController") as! RecordingViewController
-            self.navigationController?.pushViewController(secondViewController, animated: true)
-        }
-            
-        else {
-            // reject with vibration otherwise
-            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-            
-        }
-        
-
-        
-    }
+    
 
 }
 
