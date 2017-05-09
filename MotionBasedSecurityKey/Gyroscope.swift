@@ -25,10 +25,22 @@ class Gyroscope {
     
     private static var duration : TimeInterval = 20;
     private var all_Data = CMDeviceMotion();
-    private var password = Gyroscope();
+    //private var password = Gyroscope();
     
     
-    
+    init() {
+        x_Data = 0;
+        y_Data = 0;
+        z_Data = 0;
+        w_Data = 0;
+        roll_Data = 0;
+        pitch_Data = 0;
+        yaw_Data = 0;
+        
+        all_Data = CMDeviceMotion();
+        record = CMMotionManager();
+
+    }
     
     
     //MARK: Actions - Recording inertial sensor measurements and saving them to variables
@@ -65,37 +77,37 @@ class Gyroscope {
     //MARK: isPassword() determines whether the password input matches the stored password
     //      Parameters: none
     
-    func isPassword() -> Bool {
+    func isEqual(attempt : Gyroscope) -> Bool {
         
         var count = 0;
         
          //compare to saved password
         
-        if password.x_Data == self.x_Data {
+        if attempt.x_Data == self.x_Data {
             count = count + 1;
         }
         
-        if password.y_Data == self.y_Data {
+        if attempt.y_Data == self.y_Data {
             count = count + 1;
         }
         
-        if password.z_Data == self.z_Data {
+        if attempt.z_Data == self.z_Data {
             count = count + 1;
         }
         
-        if password.w_Data == self.w_Data {
+        if attempt.w_Data == self.w_Data {
             count = count + 1;
         }
         
-        if password.roll_Data == self.roll_Data {
+        if attempt.roll_Data == self.roll_Data {
             count = count + 1;
         }
         
-        if password.yaw_Data == self.yaw_Data {
+        if attempt.yaw_Data == self.yaw_Data {
             count = count + 1;
         }
         
-        if password.pitch_Data == self.pitch_Data {
+        if attempt.pitch_Data == self.pitch_Data {
             count = count + 1;
         }
         
@@ -111,13 +123,7 @@ class Gyroscope {
     
     }
         
-   
-    
-    func setPassword() {
-        
-        password = self;
-        
-    }
+
     
     
     

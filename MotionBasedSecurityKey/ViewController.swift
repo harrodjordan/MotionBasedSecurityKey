@@ -13,12 +13,18 @@ import AudioToolbox
 
 class ViewController: UIViewController {
 
-    private static var attempt = Gyroscope();
-    private static var newpass = Gyroscope();
+    private var attempt = Gyroscope();
+    private var newpass = Gyroscope();
+    private var password = Gyroscope();
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        attempt = Gyroscope();
+        newpass = Gyroscope();
+        password = Gyroscope();
+
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -28,23 +34,33 @@ class ViewController: UIViewController {
 
     //MARK: Actions
     
+    func getPassword() -> Gyroscope {
+        return password;
+    }
+    
     @IBAction func startRecordingPassword(_ sender: UIButton) {
         
         
-        //create Gryoscope object
+        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "RecordingViewController") as! RecordingViewController
+        self.navigationController?.pushViewController(secondViewController, animated: true)
+        secondViewController.spinning.startAnimating();
         
         
         //measure changes in acceleration/position
-        ViewController.newpass.recording();
+        
+        newpass.recording();
        
         //save data to a location
-        ViewController.newpass.saveData();
-        ViewController.newpass.setPassword();
         
-        //change string label to "Done!" once timed out
+        newpass.saveData();
+        password = newpass;
+        
+        secondViewController.spinning.stopAnimating();
         
         
         //move to next view controller
+        
+        secondViewController.moveToNext();
         
     }
     
@@ -55,16 +71,17 @@ class ViewController: UIViewController {
         
         
         //measure changes in acceleration/position
+        
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "RecordingViewController") as! RecordingViewController
         self.navigationController?.pushViewController(secondViewController, animated: true)
-        secondViewController.spinning.startAnimating();
-        ViewController.attempt.recording();
-        ViewController.attempt.saveData();
-        secondViewController.spinning.stopAnimating();
+        //secondViewController.viewDidLoad()
+        //secondViewController.spinning.startAnimating();
+        attempt.recording();
+        attempt.saveData();
+        //secondViewController.spinning.stopAnimating();
         
-        if ViewController.attempt.isPassword() {
-            let thirdViewController = self.storyboard?.instantiateViewController(withIdentifier: "SavedViewController") as! SavedViewController
-            self.navigationController?.pushViewController(thirdViewController, animated: true)
+        if password.isEqual(attempt: attempt) {
+            secondViewController.moveToNext();
         }
             
         else {
@@ -74,12 +91,17 @@ class ViewController: UIViewController {
             self.navigationController?.pushViewController(startViewController, animated: true)
         }
         
+        
+        
+        
+    
+    
     }
 
     
+
     
-        
-    
+
 
 }
 
