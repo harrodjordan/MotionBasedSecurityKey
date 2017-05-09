@@ -219,6 +219,9 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <connections>
+                        <outlet property="spinning" destination="1re-qp-sJz" id="2et-JG-ldN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="md7-kZ-dE8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

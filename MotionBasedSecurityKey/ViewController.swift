@@ -34,16 +34,13 @@ class ViewController: UIViewController {
 
     //MARK: Actions
     
-    func getPassword() -> Gyroscope {
-        return password;
-    }
-    
     @IBAction func startRecordingPassword(_ sender: UIButton) {
         
         
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "RecordingViewController") as! RecordingViewController
         self.navigationController?.pushViewController(secondViewController, animated: true)
-        secondViewController.spinning.startAnimating();
+        secondViewController.viewDidLoad()
+        //secondViewController.spinning.startAnimating();
         
         
         //measure changes in acceleration/position
@@ -61,6 +58,7 @@ class ViewController: UIViewController {
         //move to next view controller
         
         secondViewController.moveToNext();
+        secondViewController.getPassword(newpassword: password);
         
     }
     
@@ -74,7 +72,7 @@ class ViewController: UIViewController {
         
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "RecordingViewController") as! RecordingViewController
         self.navigationController?.pushViewController(secondViewController, animated: true)
-        //secondViewController.viewDidLoad()
+        secondViewController.viewDidLoad()
         //secondViewController.spinning.startAnimating();
         attempt.recording();
         attempt.saveData();
@@ -89,6 +87,7 @@ class ViewController: UIViewController {
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             let startViewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
             self.navigationController?.pushViewController(startViewController, animated: true)
+            startViewController.viewDidLoad()
         }
         
         

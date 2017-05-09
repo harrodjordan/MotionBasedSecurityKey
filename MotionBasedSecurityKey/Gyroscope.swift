@@ -25,7 +25,6 @@ class Gyroscope {
     
     private static var duration : TimeInterval = 20;
     private var all_Data = CMDeviceMotion();
-    //private var password = Gyroscope();
     
     
     init() {
@@ -42,8 +41,25 @@ class Gyroscope {
 
     }
     
+    struct password {
+        var x_Data : Double = 0;
+        var y_Data : Double = 0;
+        var z_Data : Double = 0;
+        var w_Data : Double = 0;
+        var roll_Data : Double = 0;
+        var pitch_Data : Double = 0;
+        var yaw_Data : Double = 0;
+        
+        
+
+    }
+    
     
     //MARK: Actions - Recording inertial sensor measurements and saving them to variables
+    
+    func getPassword() -> Gyroscope.password.Type {
+        return password.self;
+    }
     
     func recording() {
         

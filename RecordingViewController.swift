@@ -12,12 +12,14 @@ import Foundation
 class RecordingViewController: UIViewController {
     
     @IBOutlet weak var spinning: UIActivityIndicatorView!
+    private var password: Gyroscope!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         spinning = UIActivityIndicatorView()
+        password = Gyroscope();
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,9 +30,15 @@ class RecordingViewController: UIViewController {
     func moveToNext() {
         let thirdViewController = self.storyboard?.instantiateViewController(withIdentifier: "SavedViewController") as! SavedViewController
         self.navigationController?.pushViewController(thirdViewController, animated: true)
+        thirdViewController.viewDidLoad()
+        
+        thirdViewController.getPassword(newpassword: password);
         
     }
     
+    func getPassword(newpassword: Gyroscope) {
+        password = newpassword;
+    }
     
 }
 

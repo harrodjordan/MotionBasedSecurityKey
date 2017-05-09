@@ -12,7 +12,7 @@ import AudioToolbox
 
 class SavedViewController: UIViewController {
     
-    private var password = Gyroscope()
+    private var password: Gyroscope!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,11 @@ class SavedViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    
+    func getPassword(newpassword: Gyroscope) {
+        password = newpassword;
+    }
+    
     @IBAction func resetPassword(_ sender: UIButton) {
         
         // record new password
@@ -35,6 +40,7 @@ class SavedViewController: UIViewController {
         //measure changes in acceleration/position
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "CheckViewController") as! CheckViewController
         self.navigationController?.pushViewController(secondViewController, animated: true)
+        secondViewController.viewDidLoad()
         
         secondViewController.spinning.startAnimating();
         
@@ -42,8 +48,6 @@ class SavedViewController: UIViewController {
         attempt.saveData();
         
         secondViewController.spinning.stopAnimating();
-       
-        password = passViewController.getPassword();
         
         //ask for previous password and call isPassword
         
@@ -52,6 +56,7 @@ class SavedViewController: UIViewController {
             
             let recordViewController = self.storyboard?.instantiateViewController(withIdentifier: "RecordingViewController") as! RecordingViewController
             self.navigationController?.pushViewController(recordViewController, animated: true)
+            recordViewController.viewDidLoad()
         }
             
         else {
@@ -60,6 +65,9 @@ class SavedViewController: UIViewController {
             
             let thirdViewController = self.storyboard?.instantiateViewController(withIdentifier: "SavedViewController") as! SavedViewController
             self.navigationController?.pushViewController(thirdViewController, animated: true)
+            thirdViewController.viewDidLoad()
+            
+            
             
         }
         
