@@ -13,7 +13,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MotionBasedSecurityKey" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MotionBasedSecurityKey" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -102,7 +102,7 @@
         <!--Recording View Controller-->
         <scene sceneID="LwN-UO-3ke">
             <objects>
-                <viewController id="TOO-fJ-8ik" customClass="RecordingViewController" customModule="MotionBasedSecurityKey" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RecordingViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="TOO-fJ-8ik" customClass="RecordingViewController" customModule="MotionBasedSecurityKey" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Nnu-mj-opc"/>
                         <viewControllerLayoutGuide type="bottom" id="g0a-Av-8Vz"/>
@@ -144,7 +144,7 @@
         <!--Saved View Controller-->
         <scene sceneID="DPm-3S-6Ms">
             <objects>
-                <viewController id="AfK-gn-MBn" customClass="SavedViewController" customModule="MotionBasedSecurityKey" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SavedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="AfK-gn-MBn" customClass="SavedViewController" customModule="MotionBasedSecurityKey" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="MAI-ZT-AcF"/>
                         <viewControllerLayoutGuide type="bottom" id="Gh4-Ep-QVT"/>
@@ -196,7 +196,7 @@
         <!--Check View Controller-->
         <scene sceneID="Unt-eZ-t6l">
             <objects>
-                <viewController id="hdg-dp-LpE" customClass="CheckViewController" customModule="MotionBasedSecurityKey" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CheckViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hdg-dp-LpE" customClass="CheckViewController" customModule="MotionBasedSecurityKey" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0nu-ZE-sbA"/>
                         <viewControllerLayoutGuide type="bottom" id="8Qa-Hp-QfN"/>

@@ -13,7 +13,8 @@ import AudioToolbox
 
 class ViewController: UIViewController {
 
-
+    private static var attempt = Gyroscope();
+    private static var newpass = Gyroscope();
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,15 +30,16 @@ class ViewController: UIViewController {
     
     @IBAction func startRecordingPassword(_ sender: UIButton) {
         
+        
         //create Gryoscope object
-        let newpass = Gyroscope();
+        
         
         //measure changes in acceleration/position
-        newpass.recording();
+        ViewController.newpass.recording();
        
         //save data to a location
-        newpass.saveData();
-        newpass.setPassword();
+        ViewController.newpass.saveData();
+        ViewController.newpass.setPassword();
         
         //change string label to "Done!" once timed out
         
@@ -50,26 +52,25 @@ class ViewController: UIViewController {
         
         
         // record new password
-        let attempt = Gyroscope();
         
         
         //measure changes in acceleration/position
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "RecordingViewController") as! RecordingViewController
         self.navigationController?.pushViewController(secondViewController, animated: true)
         secondViewController.spinning.startAnimating();
-        attempt.recording();
-        attempt.saveData();
+        ViewController.attempt.recording();
+        ViewController.attempt.saveData();
         secondViewController.spinning.stopAnimating();
         
-        if attempt.isPassword() {
-            let thirdViewController = self.storyboard?.instantiateViewController(withIdentifier: "SavedViewController") as! RecordingViewController
+        if ViewController.attempt.isPassword() {
+            let thirdViewController = self.storyboard?.instantiateViewController(withIdentifier: "SavedViewController") as! SavedViewController
             self.navigationController?.pushViewController(thirdViewController, animated: true)
         }
             
         else {
             // reject with vibration otherwise
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-            let startViewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! RecordingViewController
+            let startViewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
             self.navigationController?.pushViewController(startViewController, animated: true)
         }
         
