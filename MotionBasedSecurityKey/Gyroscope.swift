@@ -13,7 +13,8 @@ import CoreMotion
 class Gyroscope {
     
 
-    private var record = CMMotionManager();
+    let record = CMMotionManager();
+
     
     private var x_Data : Double = 0;
     private var y_Data : Double = 0;
@@ -23,8 +24,9 @@ class Gyroscope {
     private var pitch_Data : Double = 0;
     private var yaw_Data : Double = 0;
     
-    private static var duration : TimeInterval = 20;
-    private var all_Data = CMDeviceMotion();
+    private static var duration : TimeInterval = 0.1;
+    private var all_Data = CMAttitude();
+    
     
     
     init() {
@@ -36,8 +38,7 @@ class Gyroscope {
         pitch_Data = 0;
         yaw_Data = 0;
         
-        all_Data = CMDeviceMotion();
-        record = CMMotionManager();
+        all_Data = CMAttitude();
 
     }
     
@@ -62,31 +63,51 @@ class Gyroscope {
     }
     
     func recording() {
+    
         
-        if record.isDeviceMotionAvailable || !record.isDeviceMotionActive {
+        let data = CMDeviceMotionHandler();
+        
+        if record.isDeviceMotionAvailable {
             
             record.deviceMotionUpdateInterval = Gyroscope.duration;
+            record.accelerometerUpdateInterval = Gyroscope.duration;
+            record.gyroUpdateInterval = Gyroscope.duration;
+            record.magnetometerUpdateInterval = Gyroscope.duration;
             
             record.startDeviceMotionUpdates();
+            record.startGyroUpdates()
+            record.startAccelerometerUpdates()
+            record.startMagnetometerUpdates()
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(20), execute: {
+            
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
                 self.record.stopDeviceMotionUpdates()
+                self.record.stopGyroUpdates()
+                self.record.stopAccelerometerUpdates()
+                self.record.stopMagnetometerUpdates()
             })
             
-            all_Data = record.deviceMotion!;
+            all_Data = record.deviceMotion!.attitude;
+            self.saveData();
+            
         }
+        
+        else {
+            print("Core Motion Not Available")
+                }
     }
     
     //MARK: saveData() takes global variable all_Data and removes x,y,x accelereter readings
     func saveData() {
         
-        x_Data = all_Data.attitude.quaternion.x;
-        y_Data = all_Data.attitude.quaternion.y;
-        z_Data = all_Data.attitude.quaternion.z;
-        w_Data = all_Data.attitude.quaternion.w;
-        roll_Data = all_Data.attitude.roll;
-        pitch_Data = all_Data.attitude.pitch;
-        yaw_Data = all_Data.attitude.yaw;
+        x_Data = all_Data.quaternion.x;
+        y_Data = all_Data.quaternion.y;
+        z_Data = all_Data.quaternion.z;
+        w_Data = all_Data.quaternion.w;
+        roll_Data = all_Data.roll;
+        pitch_Data = all_Data.pitch;
+        yaw_Data = all_Data.yaw;
         
     }
     

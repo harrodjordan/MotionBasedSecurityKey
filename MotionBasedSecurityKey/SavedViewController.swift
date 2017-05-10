@@ -38,7 +38,7 @@ class SavedViewController: UIViewController {
         
         
         //measure changes in acceleration/position
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "CheckViewController") as! CheckViewController
+        let secondViewController = CheckViewController()
         self.navigationController?.pushViewController(secondViewController, animated: true)
         secondViewController.viewDidLoad()
         

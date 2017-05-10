@@ -23,6 +23,8 @@ class ViewController: UIViewController {
         attempt = Gyroscope();
         newpass = Gyroscope();
         password = Gyroscope();
+        
+        
 
 
     }
@@ -49,10 +51,10 @@ class ViewController: UIViewController {
        
         //save data to a location
         
-        newpass.saveData();
+        //newpass.saveData();
         password = newpass;
         
-        secondViewController.spinning.stopAnimating();
+        //secondViewController.spinning.stopAnimating();
         
         
         //move to next view controller
@@ -70,7 +72,7 @@ class ViewController: UIViewController {
         
         //measure changes in acceleration/position
         
-        let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "RecordingViewController") as! RecordingViewController
+        let secondViewController = RecordingViewController()
         self.navigationController?.pushViewController(secondViewController, animated: true)
         secondViewController.viewDidLoad()
         //secondViewController.spinning.startAnimating();
@@ -85,7 +87,7 @@ class ViewController: UIViewController {
         else {
             // reject with vibration otherwise
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
-            let startViewController = self.storyboard?.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+            let startViewController = ViewController()
             self.navigationController?.pushViewController(startViewController, animated: true)
             startViewController.viewDidLoad()
         }

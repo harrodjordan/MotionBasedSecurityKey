@@ -28,11 +28,13 @@ class RecordingViewController: UIViewController {
     }
     
     func moveToNext() {
-        let thirdViewController = self.storyboard?.instantiateViewController(withIdentifier: "SavedViewController") as! SavedViewController
+        let thirdViewController = SavedViewController()
         self.navigationController?.pushViewController(thirdViewController, animated: true)
+        thirdViewController.getPassword(newpassword: password);
+        
         thirdViewController.viewDidLoad()
         
-        thirdViewController.getPassword(newpassword: password);
+        
         
     }
     
