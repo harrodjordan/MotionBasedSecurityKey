@@ -16,31 +16,31 @@ class Gyroscope {
     let record = CMMotionManager();
 
     
-    private var x_Data : Double = 0;
-    private var y_Data : Double = 0;
-    private var z_Data : Double = 0;
-    private var w_Data : Double = 0;
-    private var roll_Data : Double = 0;
-    private var pitch_Data : Double = 0;
-    private var yaw_Data : Double = 0;
+    private var x_Data = [0.0];
+    private var y_Data = [0.0];
+    private var z_Data = [0.0];
+    private var w_Data = [0.0];
+    private var roll_Data = [0.0];
+    private var pitch_Data = [0.0];
+    private var yaw_Data = [0.0];
     
     private static var duration : TimeInterval = 0.1;
     private var all_Data = CMAttitude();
     
     
     
-    init() {
-        x_Data = 0;
-        y_Data = 0;
-        z_Data = 0;
-        w_Data = 0;
-        roll_Data = 0;
-        pitch_Data = 0;
-        yaw_Data = 0;
+    /*init() {
+        x_Data = [0.0];
+        y_Data = [0.0];
+        z_Data = [0.0];
+        w_Data = [0.0];
+        roll_Data = [0.0];
+        pitch_Data = [0.0];
+        yaw_Data = [0.0];
         
         all_Data = CMAttitude();
 
-    }
+    }*/
     
     struct password {
         var x_Data : Double = 0;
@@ -63,53 +63,44 @@ class Gyroscope {
     }
     
     func recording() {
-    
         
-        let data = CMDeviceMotionHandler();
-        
-        if record.isDeviceMotionAvailable {
+        //if record.isDeviceMotionAvailable {
             
             record.deviceMotionUpdateInterval = Gyroscope.duration;
             record.accelerometerUpdateInterval = Gyroscope.duration;
             record.gyroUpdateInterval = Gyroscope.duration;
             record.magnetometerUpdateInterval = Gyroscope.duration;
             
-            record.startDeviceMotionUpdates();
-            record.startGyroUpdates()
-            record.startAccelerometerUpdates()
-            record.startMagnetometerUpdates()
-            
-            
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
-                self.record.stopDeviceMotionUpdates()
-                self.record.stopGyroUpdates()
-                self.record.stopAccelerometerUpdates()
-                self.record.stopMagnetometerUpdates()
+            record.startDeviceMotionUpdates(to: OperationQueue.main, withHandler: {
+                (motion: CMDeviceMotion?, Error) -> Void in
+
+                self.x_Data.append((self.record.deviceMotion?.attitude.quaternion.x)!);
+                self.y_Data.append((self.record.deviceMotion?.attitude.quaternion.y)!);
+                self.z_Data.append((self.record.deviceMotion?.attitude.quaternion.z)!);
+                self.w_Data.append((self.record.deviceMotion?.attitude.quaternion.w)!);
+                self.roll_Data.append((self.record.deviceMotion?.attitude.roll)!);
+                self.pitch_Data.append((self.record.deviceMotion?.attitude.pitch)!);
+                self.yaw_Data.append((self.record.deviceMotion?.attitude.yaw)!);
+                
+               
+
             })
-            
-            all_Data = record.deviceMotion!.attitude;
-            self.saveData();
-            
-        }
         
-        else {
-            print("Core Motion Not Available")
-                }
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
+            self.record.stopDeviceMotionUpdates()
+            
+            
+       })
+        
+       // }
+        
+        //else {
+            //print("Core Motion Not Available")
+                //}
+
+  
     }
     
-    //MARK: saveData() takes global variable all_Data and removes x,y,x accelereter readings
-    func saveData() {
-        
-        x_Data = all_Data.quaternion.x;
-        y_Data = all_Data.quaternion.y;
-        z_Data = all_Data.quaternion.z;
-        w_Data = all_Data.quaternion.w;
-        roll_Data = all_Data.roll;
-        pitch_Data = all_Data.pitch;
-        yaw_Data = all_Data.yaw;
-        
-    }
     
     //MARK: isPassword() determines whether the password input matches the stored password
     //      Parameters: none

@@ -14,12 +14,15 @@ class CheckViewController: UIViewController {
     
     @IBOutlet weak var spinning: UIActivityIndicatorView!
     private var password: Gyroscope!
+    //@IBOutlet weak var buttonRecord: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         spinning = UIActivityIndicatorView();
         password = Gyroscope();
+        //buttonRecord = UIButton();
+       // buttonRecord.isEnabled = false;
     }
     
     override func didReceiveMemoryWarning() {

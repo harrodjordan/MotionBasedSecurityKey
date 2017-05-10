@@ -33,29 +33,31 @@ class SavedViewController: UIViewController {
     
     @IBAction func resetPassword(_ sender: UIButton) {
         
-        // record new password
-        let attempt = Gyroscope();
-        
-        
         //measure changes in acceleration/position
         let secondViewController = CheckViewController()
         self.navigationController?.pushViewController(secondViewController, animated: true)
         secondViewController.viewDidLoad()
         
-        secondViewController.spinning.startAnimating();
+        // record new password
+        let attempt = Gyroscope();
+        
+        //secondViewController.spinning.startAnimating();
         
         attempt.recording();
-        attempt.saveData();
         
-        secondViewController.spinning.stopAnimating();
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
+        AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+        
+        //secondViewController.spinning.stopAnimating();
         
         //ask for previous password and call isPassword
         
-        if password.isEqual(attempt: attempt) {
+        if self.password.isEqual(attempt: attempt) {
             // move back to start recording screen if similar enough
-            
+               //secondViewController.buttonRecord.isEnabled = true;
             let recordViewController = self.storyboard?.instantiateViewController(withIdentifier: "RecordingViewController") as! RecordingViewController
             self.navigationController?.pushViewController(recordViewController, animated: true)
+         
             recordViewController.viewDidLoad()
         }
             
@@ -70,7 +72,7 @@ class SavedViewController: UIViewController {
             
             
         }
-        
+        })
 }
 
 }

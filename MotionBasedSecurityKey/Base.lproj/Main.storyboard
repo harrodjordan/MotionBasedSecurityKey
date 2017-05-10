@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -120,13 +120,23 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wwf-vs-8pc">
+                                <rect key="frame" x="167" y="455" width="41" height="30"/>
+                                <state key="normal" title="Done!"/>
+                                <connections>
+                                    <action selector="moveToNext:" destination="TOO-fJ-8ik" eventType="touchUpInside" id="hxN-Bf-4L8"/>
+                                    <segue destination="AfK-gn-MBn" kind="show" id="Lr5-fx-0vc"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="gNQ-b9-1kl" secondAttribute="trailing" constant="48" id="5yU-JH-OvN"/>
                             <constraint firstItem="g9r-47-TKI" firstAttribute="centerY" secondItem="wGd-kB-21C" secondAttribute="centerY" id="FJJ-xB-ZLg"/>
                             <constraint firstItem="gNQ-b9-1kl" firstAttribute="centerX" secondItem="wGd-kB-21C" secondAttribute="centerX" id="H1K-a1-aiM"/>
+                            <constraint firstItem="g0a-Av-8Vz" firstAttribute="top" secondItem="wwf-vs-8pc" secondAttribute="bottom" constant="182" id="PNI-05-211"/>
                             <constraint firstItem="gNQ-b9-1kl" firstAttribute="leading" secondItem="wGd-kB-21C" secondAttribute="leadingMargin" constant="47" id="TkZ-1p-oEe"/>
+                            <constraint firstItem="wwf-vs-8pc" firstAttribute="centerX" secondItem="g9r-47-TKI" secondAttribute="centerX" id="a1I-ZS-Yfd"/>
                             <constraint firstItem="gNQ-b9-1kl" firstAttribute="top" secondItem="Nnu-mj-opc" secondAttribute="bottom" constant="113" id="eOL-ge-7Hu"/>
                             <constraint firstItem="g9r-47-TKI" firstAttribute="leading" secondItem="wGd-kB-21C" secondAttribute="leadingMargin" constant="161" id="kAl-en-ceP"/>
                             <constraint firstAttribute="trailingMargin" secondItem="g9r-47-TKI" secondAttribute="trailing" constant="162" id="sVP-to-Ti5"/>
@@ -179,15 +189,13 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Change Your Password"/>
                                 <connections>
-                                    <action selector="resetPassword:" destination="AfK-gn-MBn" eventType="touchUpInside" id="P87-qJ-48R"/>
+                                    <action selector="resetPassword:" destination="AfK-gn-MBn" eventType="touchUpInside" id="OcH-Lf-zGq"/>
+                                    <segue destination="hdg-dp-LpE" kind="show" id="doh-ph-vds"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <connections>
-                        <outlet property="resetPassword" destination="bB8-o1-kv2" id="VR3-av-tLk"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rk5-Sk-8Ta" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -216,6 +224,14 @@
                                 <rect key="frame" x="177" y="323" width="20" height="20"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cI3-WJ-0dM">
+                                <rect key="frame" x="110" y="432" width="154" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Record New Password"/>
+                                <connections>
+                                    <segue destination="TOO-fJ-8ik" kind="show" id="PdO-ph-RF0"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -228,4 +244,7 @@
             <point key="canvasLocation" x="2566" y="37"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="PdO-ph-RF0"/>
+    </inferredMetricsTieBreakers>
 </document>

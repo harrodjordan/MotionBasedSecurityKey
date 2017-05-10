@@ -42,25 +42,31 @@ class ViewController: UIViewController {
         let secondViewController = self.storyboard?.instantiateViewController(withIdentifier: "RecordingViewController") as! RecordingViewController
         self.navigationController?.pushViewController(secondViewController, animated: true)
         secondViewController.viewDidLoad()
-        //secondViewController.spinning.startAnimating();
         
         
         //measure changes in acceleration/position
         
         newpass.recording();
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
+            
+            AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
+            
+            //newpass.saveData();
+            self.password = self.newpass;
+            
+            
+            //move to next view controller
+            
+            secondViewController.getPassword(newpassword: self.password);
+            
+        })
+
+        
        
-        //save data to a location
-        
-        //newpass.saveData();
-        password = newpass;
-        
-        //secondViewController.spinning.stopAnimating();
         
         
-        //move to next view controller
         
-        secondViewController.moveToNext();
-        secondViewController.getPassword(newpassword: password);
         
     }
     
@@ -77,11 +83,12 @@ class ViewController: UIViewController {
         secondViewController.viewDidLoad()
         //secondViewController.spinning.startAnimating();
         attempt.recording();
-        attempt.saveData();
+       //attempt.saveData();
         //secondViewController.spinning.stopAnimating();
         
         if password.isEqual(attempt: attempt) {
-            secondViewController.moveToNext();
+            //change text and allow button to be pressed
+            //secondViewController.buttonDone.isEnabled = true;
         }
             
         else {

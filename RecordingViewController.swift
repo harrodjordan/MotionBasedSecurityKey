@@ -13,6 +13,7 @@ class RecordingViewController: UIViewController {
     
     @IBOutlet weak var spinning: UIActivityIndicatorView!
     private var password: Gyroscope!
+    //@IBOutlet weak var buttonDone: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,16 +28,17 @@ class RecordingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func moveToNext() {
+    @IBAction func moveToNext(_ sender: UIButton) {
         let thirdViewController = SavedViewController()
+        
         self.navigationController?.pushViewController(thirdViewController, animated: true)
+        
         thirdViewController.getPassword(newpassword: password);
         
+        
         thirdViewController.viewDidLoad()
-        
-        
-        
     }
+  
     
     func getPassword(newpassword: Gyroscope) {
         password = newpassword;
