@@ -9,18 +9,19 @@
 import UIKit
 import Foundation
 
+
 class RecordingViewController: UIViewController {
     
     @IBOutlet weak var spinning: UIActivityIndicatorView!
-    private var password: Gyroscope!
-    //@IBOutlet weak var buttonDone: UIButton!
+     var password: Gyroscope!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
         spinning = UIActivityIndicatorView()
-        password = Gyroscope();
+
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -28,21 +29,23 @@ class RecordingViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+      
+       if let destinationViewController = segue.destination as? SavedViewController {
+            destinationViewController.password = self.password
+        }
+    }
+    
     @IBAction func moveToNext(_ sender: UIButton) {
         let thirdViewController = SavedViewController()
         
         self.navigationController?.pushViewController(thirdViewController, animated: true)
         
-        thirdViewController.getPassword(newpassword: password);
-        
         
         thirdViewController.viewDidLoad()
     }
   
-    
-    func getPassword(newpassword: Gyroscope) {
-        password = newpassword;
-    }
+ 
     
 }
 

@@ -12,12 +12,11 @@ import AudioToolbox
 
 class SavedViewController: UIViewController {
     
-    private var password: Gyroscope!
+     var password: Gyroscope!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        password = Gyroscope();
         
     }
     
@@ -25,11 +24,14 @@ class SavedViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
     
-    func getPassword(newpassword: Gyroscope) {
-        password = newpassword;
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if let destinationViewController = segue.destination as? CheckViewController {
+            destinationViewController.password = self.password
+        }
     }
+
     
     @IBAction func resetPassword(_ sender: UIButton) {
         

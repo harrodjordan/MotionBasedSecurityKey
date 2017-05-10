@@ -23,9 +23,6 @@ class ViewController: UIViewController {
         attempt = Gyroscope();
         newpass = Gyroscope();
         password = Gyroscope();
-        
-        
-
 
     }
 
@@ -33,8 +30,16 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+
+        if let destinationViewController = segue.destination as? RecordingViewController {
+            destinationViewController.password = password
+        }
+    }
 
     //MARK: Actions
+
     
     @IBAction func startRecordingPassword(_ sender: UIButton) {
         
@@ -48,17 +53,16 @@ class ViewController: UIViewController {
         
         newpass.recording();
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(6), execute: {
             
             AudioServicesPlayAlertSound(SystemSoundID(kSystemSoundID_Vibrate))
             
             //newpass.saveData();
             self.password = self.newpass;
             
-            
             //move to next view controller
             
-            secondViewController.getPassword(newpassword: self.password);
+            //secondViewController.getPassword(newpassword: self.newpass);
             
         })
 

@@ -13,16 +13,15 @@ import Foundation
 class CheckViewController: UIViewController {
     
     @IBOutlet weak var spinning: UIActivityIndicatorView!
-    private var password: Gyroscope!
+     var password: Gyroscope!
     //@IBOutlet weak var buttonRecord: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         spinning = UIActivityIndicatorView();
-        password = Gyroscope();
-        //buttonRecord = UIButton();
-       // buttonRecord.isEnabled = false;
+        
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -30,9 +29,6 @@ class CheckViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func getPassword(newpassword: Gyroscope) {
-        password = newpassword;
-    }
-    
+
     
 }

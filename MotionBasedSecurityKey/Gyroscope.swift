@@ -80,11 +80,19 @@ class Gyroscope {
                 self.w_Data.append((self.record.deviceMotion?.attitude.quaternion.w)!);
                 self.roll_Data.append((self.record.deviceMotion?.attitude.roll)!);
                 self.pitch_Data.append((self.record.deviceMotion?.attitude.pitch)!);
-                self.yaw_Data.append((self.record.deviceMotion?.attitude.yaw)!);
+               self.yaw_Data.append((self.record.deviceMotion?.attitude.yaw)!);
+                
                 
                
 
             })
+        /*self.x_Data.append((self.record.deviceMotion?.attitude.quaternion.x)!);
+        self.y_Data.append((self.record.deviceMotion?.attitude.quaternion.y)!);
+        self.z_Data.append((self.record.deviceMotion?.attitude.quaternion.z)!);
+        self.w_Data.append((self.record.deviceMotion?.attitude.quaternion.w)!);
+        self.roll_Data.append((self.record.deviceMotion?.attitude.roll)!);
+        self.pitch_Data.append((self.record.deviceMotion?.attitude.pitch)!);
+        self.yaw_Data.append((self.record.deviceMotion?.attitude.yaw)!);*/
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
             self.record.stopDeviceMotionUpdates()
@@ -92,6 +100,7 @@ class Gyroscope {
             
        })
         
+      
        // }
         
         //else {
