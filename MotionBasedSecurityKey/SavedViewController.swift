@@ -32,6 +32,8 @@ class SavedViewController: UIViewController {
         }
     }
 
+    //MARK: resetPassword() resets the existing password by overwriting the data with the new recorded input
+    //      Parameters: UIButton - must be pressed in order to call the method
     
     @IBAction func resetPassword(_ sender: UIButton) {
         

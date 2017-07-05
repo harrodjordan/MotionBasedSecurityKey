@@ -13,14 +13,15 @@ import AudioToolbox
 
 class ViewController: UIViewController {
 
-    private var attempt = Gyroscope();
-    private var newpass = Gyroscope();
-    private var password = Gyroscope();
+    private var attempt = Gyroscope(); //password attempt, must be compared to password
+    private var newpass = Gyroscope(); //new password, to be saved
+    private var password = Gyroscope(); //current password
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        attempt = Gyroscope();
+        attempt = Gyroscope(); //instantiate all variables
         newpass = Gyroscope();
         password = Gyroscope();
 
@@ -40,6 +41,8 @@ class ViewController: UIViewController {
 
     //MARK: Actions
 
+    //MARK: startRecordingPassword() records a new password input, switches ViewController to RecordingViewController
+    //      Parameters: UIButton - must be pressed in order to call the method
     
     @IBAction func startRecordingPassword(_ sender: UIButton) {
         
@@ -73,6 +76,9 @@ class ViewController: UIViewController {
         
         
     }
+    
+    //MARK: inputtingPassword() records a new password input, compares to current password, switches ViewController to RecordingViewController
+    //      Parameters: UIButton - must be pressed in order to call the method
     
     @IBAction func inputtingPassword(_ sender: UIButton) {
         

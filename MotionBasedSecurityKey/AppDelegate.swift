@@ -8,9 +8,13 @@
 
 import UIKit
 
+// JH: Unchanged from the original Xcode specifications
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    
     var window: UIWindow?
 
 

@@ -9,6 +9,8 @@
 import UIKit
 import Foundation
 
+// JH: Unchanged from the original Xcode specifications
+// JH: Created in order to utilize the RecordingViewController in other areas of the application, this ViewController is transient.
 
 class RecordingViewController: UIViewController {
     

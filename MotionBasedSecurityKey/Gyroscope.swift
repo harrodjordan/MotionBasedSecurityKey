@@ -28,19 +28,7 @@ class Gyroscope {
     private var all_Data = CMAttitude();
     
     
-    
-    /*init() {
-        x_Data = [0.0];
-        y_Data = [0.0];
-        z_Data = [0.0];
-        w_Data = [0.0];
-        roll_Data = [0.0];
-        pitch_Data = [0.0];
-        yaw_Data = [0.0];
-        
-        all_Data = CMAttitude();
 
-    }*/
     
     struct password {
         var x_Data : Double = 0;
@@ -58,21 +46,28 @@ class Gyroscope {
     
     //MARK: Actions - Recording inertial sensor measurements and saving them to variables
     
+    
+    //MARK: getPassword() returns the stored password
+    //      Parameters: none
+    
     func getPassword() -> Gyroscope.password.Type {
-        return password.self;
+        return password.self; //returns the password for that particular phone
     }
+    
+    //MARK: recording() records a password in order to either compare it to the existing password or to set a new password
+    //      Parameters: none
     
     func recording() {
         
         //if record.isDeviceMotionAvailable {
             
-            record.deviceMotionUpdateInterval = Gyroscope.duration;
+            record.deviceMotionUpdateInterval = Gyroscope.duration;  //save all requisite data for the recording
             record.accelerometerUpdateInterval = Gyroscope.duration;
             record.gyroUpdateInterval = Gyroscope.duration;
             record.magnetometerUpdateInterval = Gyroscope.duration;
             
             record.startDeviceMotionUpdates(to: OperationQueue.main, withHandler: {
-                (motion: CMDeviceMotion?, Error) -> Void in
+                (motion: CMDeviceMotion?, Error) -> Void in //record the data
 
                 self.x_Data.append((self.record.deviceMotion?.attitude.quaternion.x)!);
                 self.y_Data.append((self.record.deviceMotion?.attitude.quaternion.y)!);
@@ -86,26 +81,15 @@ class Gyroscope {
                
 
             })
-        /*self.x_Data.append((self.record.deviceMotion?.attitude.quaternion.x)!);
-        self.y_Data.append((self.record.deviceMotion?.attitude.quaternion.y)!);
-        self.z_Data.append((self.record.deviceMotion?.attitude.quaternion.z)!);
-        self.w_Data.append((self.record.deviceMotion?.attitude.quaternion.w)!);
-        self.roll_Data.append((self.record.deviceMotion?.attitude.roll)!);
-        self.pitch_Data.append((self.record.deviceMotion?.attitude.pitch)!);
-        self.yaw_Data.append((self.record.deviceMotion?.attitude.yaw)!);*/
         
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(5), execute: {
-            self.record.stopDeviceMotionUpdates()
+            self.record.stopDeviceMotionUpdates() // stop recording
             
             
        })
         
       
-       // }
-        
-        //else {
-            //print("Core Motion Not Available")
-                //}
+  
 
   
     }
