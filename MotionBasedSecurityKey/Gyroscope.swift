@@ -31,16 +31,14 @@ class Gyroscope {
 
     
     struct password {
-        var x_Data : Double = 0;
-        var y_Data : Double = 0;
-        var z_Data : Double = 0;
-        var w_Data : Double = 0;
-        var roll_Data : Double = 0;
-        var pitch_Data : Double = 0;
-        var yaw_Data : Double = 0;
+        static var x_Data_pass : [Double] = [0];
+        static var y_Data_pass : [Double] = [0];
+        static var z_Data_pass : [Double] = [0];
+        static var w_Data_pass : [Double] = [0];
+        static var roll_Data_pass : [Double] = [0];
+        static var pitch_Data_pass : [Double] = [0];
+        static var yaw_Data_pass : [Double] = [0];
         
-        
-
     }
     
     
@@ -56,6 +54,7 @@ class Gyroscope {
     
     //MARK: recording() records a password in order to either compare it to the existing password or to set a new password
     //      Parameters: none
+    // add in a return to save the password
     
     func recording() {
         
@@ -86,12 +85,17 @@ class Gyroscope {
             self.record.stopDeviceMotionUpdates() // stop recording
             
             
+            password.pitch_Data_pass = self.pitch_Data;
+            password.roll_Data_pass = self.roll_Data;
+            password.w_Data_pass = self.w_Data;
+            password.x_Data_pass = self.x_Data;
+            password.y_Data_pass = self.y_Data;
+            password.yaw_Data_pass = self.yaw_Data;
+            password.z_Data_pass = self.z_Data
+            
+            
        })
-        
-      
-  
 
-  
     }
     
     
